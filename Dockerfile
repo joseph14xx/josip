@@ -1,7 +1,7 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
-RUN chmod +x mvnw && ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Stage 2: Run the built JAR package inside a lightweight container
 FROM eclipse-temurin:17-jre-alpine
